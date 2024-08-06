@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  nginx:
+    container_name: nginx
+    build:
+      context: ./nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - nodeapp
+
+  nodeapp:
+    container_name: nodeapp
+    build:
+      context: ./nodeapp
+    volumes:
+      - ./nodeapp:/app
+      - /app/node_modules 
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - mysql
+    entrypoint: ["dockerize", "-wait", "tcp://mysql:3306", "-timeout", "15s", "npm", "start"]
+
+  mysql:
+    image: mysql
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password123
+      MYSQL_DATABASE: fullcycle
+    ports:
+      - "3306:3306"
+    volumes:
+      - .mysql-data:/var/lib/mysql
