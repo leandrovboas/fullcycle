@@ -10,7 +10,10 @@ Este projeto utiliza Docker e Docker Compose para configurar uma aplicação que
 
 - [x] Quando um usuário acesse o nginx, o mesmo fará uma chamada em nossa aplicação node.js
 - [x] A aplicação por sua vez adicionará um registro em nosso banco de dados mysql, cadastrando um nome na tabela people.
-- [x] O retorno da aplicação node.js para o nginx deverá ser: <h1>Full Cycle Rocks!</h1> + Lista de nomes cadastrada no banco de dados.
+- [x] O retorno da aplicação node.js para o nginx deverá ser:a lista de nomes cadastrada no banco de dados + 
+```html
+<h1>Full Cycle Rocks!</h1>
+```
 - [x] Deve ser gerado um docker-compose de uma forma que basta apenas rodarmos: docker-compose up -d
 - [x] A aplicação deve estar disponível na porta: 8080.
 - [x] Deve ser colocado o volume na aplicação para o ambiente de desenvolvimento. 
