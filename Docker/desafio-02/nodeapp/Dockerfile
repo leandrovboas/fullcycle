@@ -9,7 +9,8 @@ RUN apk add --no-cache wget tar && \
     tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
     rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-COPY package*.json  ./
+COPY package.json  .
+COPY package-lock.json  .
 
 RUN npm ci
 
